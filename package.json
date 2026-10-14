@@ -7,23 +7,27 @@
     "watch": "eleventy --watch",
     "serve": "eleventy --serve",
     "debug": "DEBUG=* eleventy",
-    "start": "npm run serve"
+    "start": "npm run serve",
+    "test": "node --test tests/*.test.cjs && python3 scripts/check-build.py"
   },
   "repository": {
     "type": "git",
     "url": "http://github.com/maxboeck/emergency-site"
   },
-  "author": "Max Böck",
+  "author": "Max B\u00f6ck",
   "license": "MIT",
   "dependencies": {
-    "@11ty/eleventy": "^0.10.0",
-    "@11ty/eleventy-plugin-rss": "^1.0.7",
+    "@11ty/eleventy": "^3.1.6",
+    "@11ty/eleventy-plugin-rss": "^3.1.0",
     "clean-css": "^4.2.3",
     "dotenv": "^8.2.0",
-    "eleventy-plugin-pwa": "^1.0.8",
-    "html-minifier": "^4.0.0",
-    "luxon": "^1.22.0",
-    "markdown-it": "^10.0.0",
-    "markdown-it-anchor": "^5.2.5"
+    "luxon": "^3.7.2",
+    "markdown-it": "^15.0.2",
+    "markdown-it-anchor": "^10.0.0",
+    "html-minifier-terser": "^7.2.0",
+    "workbox-build": "^7.4.1"
+  },
+  "engines": {
+    "node": "22.x"
   }
 }
