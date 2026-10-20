@@ -16,14 +16,14 @@
   "author": "Max Böck",
   "license": "MIT",
   "dependencies": {
-    "@11ty/eleventy": "^0.10.0",
+    "@11ty/eleventy": "^3.1.7",
     "@11ty/eleventy-plugin-rss": "^1.0.7",
     "clean-css": "^4.2.3",
     "dotenv": "^8.2.0",
     "eleventy-plugin-pwa": "^1.0.8",
     "html-minifier": "^4.0.0",
     "luxon": "^1.22.0",
-    "markdown-it": "^12.3.2",
+    "markdown-it": "^15.0.3",
     "markdown-it-anchor": "^5.2.5"
   }
 }
