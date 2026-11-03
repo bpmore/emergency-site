@@ -14,7 +14,7 @@
     "type": "git",
     "url": "http://github.com/maxboeck/emergency-site"
   },
-  "author": "Max B\u00f6ck",
+  "author": "Max Böck",
   "license": "MIT",
   "dependencies": {
     "@11ty/eleventy": "^3.1.6",
