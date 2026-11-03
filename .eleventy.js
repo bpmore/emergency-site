@@ -1,5 +1,5 @@
-const pluginRss = require('@11ty/eleventy-plugin-rss')
-const pluginPWA = require('eleventy-plugin-pwa')
+const { default: pluginRss } = require('@11ty/eleventy-plugin-rss')
+const { generateSW } = require('workbox-build')
 const markdownIt = require('markdown-it')
 const markdownItAnchor = require('markdown-it-anchor')
 
@@ -8,6 +8,7 @@ const transforms = require('./eleventy/transforms.js')
 
 const workboxOptions = {
     cacheId: 'emergency-site',
+    globDirectory: './dist',
     swDest: './dist/sw.js',
     globPatterns: ['**/*.html'],
     globIgnores: ['admin/**/*', '404/**/*'],
@@ -20,7 +21,9 @@ require('dotenv').config()
 module.exports = function(config) {
     // Plugins
     config.addPlugin(pluginRss)
-    config.addPlugin(pluginPWA, workboxOptions)
+    config.on('eleventy.after', async () => {
+        await generateSW(workboxOptions)
+    })
 
     // Filters
     Object.keys(filters).forEach(filterName => {
@@ -39,9 +42,10 @@ module.exports = function(config) {
         linkify: true,
         typographer: true
     }).use(markdownItAnchor, {
-        permalink: true,
-        permalinkClass: 'anchor',
-        permalinkSymbol: '#'
+        permalink: markdownItAnchor.permalink.linkInsideHeader({
+            class: 'anchor',
+            symbol: '#'
+        })
     })
     config.setLibrary('md', mdlib)
 
